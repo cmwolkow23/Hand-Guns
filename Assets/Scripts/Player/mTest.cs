@@ -40,6 +40,7 @@ public class mTest : MonoBehaviour
         Vector2 moveInput = mPlayeractions.player.move.ReadValue<Vector2>();
         mMovementInput = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
         mLookInput = Quaternion.Euler(0f, look.PanAxis.Value, 0f);
+        transform.rotation = mLookInput;
         if (mPlayeractions.player.Jump.IsPressed() && grounded == true)
         {
             grounded = false;
@@ -49,7 +50,6 @@ public class mTest : MonoBehaviour
 
     private void HandleMovement()
     {
-        transform.rotation = mLookInput;
         // Transform movement input to be relative to where the player is looking
         Vector3 relativeMovement = transform.TransformDirection(mMovementInput);
         relativeMovement.y = 0f; // Keep movement on horizontal plane only
