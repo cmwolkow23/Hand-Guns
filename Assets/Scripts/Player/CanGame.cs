@@ -25,6 +25,7 @@ public class CanGame : MonoBehaviour
         {
             // Implement can game logic here
             block.SetActive(false );
+            if(scoreUI != null)
             scoreUI.gameObject.SetActive(true );
         }
     }
@@ -39,8 +40,11 @@ public class CanGame : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
             transform.position = startPos;
             transform.rotation = rotation;
-            score = 0;
-            scoreUI.gameObject.SetActive(false);
+            if (scoreUI != null)
+            {
+                score = 0;
+                scoreUI.gameObject.SetActive(false);
+            }
 
         }
     }

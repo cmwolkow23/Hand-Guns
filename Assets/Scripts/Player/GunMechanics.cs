@@ -31,7 +31,6 @@ public class GunMechanics : MonoBehaviour
         {
             // Perform shooting action
             Debug.Log("Shooting!");
-            Debug.DrawRay(transform.position, transform.forward * 100f, Color.red, 50f);
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, 100f))
             {
                 if(hitInfo.collider.name == "Can")
