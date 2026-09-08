@@ -15,6 +15,7 @@ public class GameActionTrigger : MonoBehaviour
     public string ignoreTag;
     [Tooltip("Ignore ResetBlocks events, useful for triggers that should not be reset")]
     public bool bIgnoreReset;
+    public bool ignoreShootRaycast = false;
     [SerializeReference,SubclassSelector]
     public List<GameAction> enterActions = new List<GameAction>(),exitActions = new List<GameAction>();
     private bool bActive,bDeActive,bTriggered,bLock,bStateChange,bExitSequence;

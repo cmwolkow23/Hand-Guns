@@ -50,6 +50,15 @@ public class GunMechanics : MonoBehaviour
                     rb.AddExplosionForce(explosionForce, hitInfo.point, 5f, 1f, ForceMode.Impulse);
                     rb.AddForceAtPosition(transform.forward * forceMultiplier, hitInfo.point, ForceMode.Impulse);
                 }
+                if(hitInfo.transform.TryGetComponent<GameActionTrigger>(out GameActionTrigger gat))
+                {
+                    if (!gat.ignoreShootRaycast)
+                        return;
+                    else
+                    {
+                        gat.enterActions.ForEach(action => action.Action());
+                    }
+                }
             }
 
         }
