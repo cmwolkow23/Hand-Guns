@@ -162,6 +162,7 @@ MonoBehaviour:
   bEntryOnly: 0
   ignoreTag: 
   bIgnoreReset: 0
+  ignoreShootRaycast: 0
   enterActions:
   - rid: 3036337747221807104
   - rid: 3036337747221807105
@@ -267,7 +268,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 0543c90dd4a8a7c4f81e3e1a6ebf27ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
