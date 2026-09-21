@@ -131,20 +131,16 @@ MonoBehaviour:
   bEntryOnly: 0
   ignoreTag: 
   bIgnoreReset: 0
+  ignoreShootRaycast: 0
   enterActions:
-  - rid: 3036337701924110338
   - rid: 3036337701924110339
+  - rid: -2
   exitActions: []
   references:
     version: 2
     RefIds:
-    - rid: 3036337701924110338
-      type: {class: PrintGA, ns: , asm: Assembly-CSharp}
-      data:
-        name: Print
-        delay: 0
-        bPrintCollider: 0
-        message: Target Triggered
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 3036337701924110339
       type: {class: SwitchColorGA, ns: , asm: Assembly-CSharp}
       data:
@@ -152,4 +148,5 @@ MonoBehaviour:
         delay: 0
         newColor: {r: 0.19953172, g: 0.5294118, b: 0.17254901, a: 0}
         mRenderers:
+        - {fileID: 1026534926518402436}
         - {fileID: 1026534926518402436}
