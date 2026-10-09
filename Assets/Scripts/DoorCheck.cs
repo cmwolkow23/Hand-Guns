@@ -6,10 +6,10 @@ public class DoorCheck : MonoBehaviour
     public int requiredSignalCount = 3;
 
     [SerializeReference, SubclassSelector]
-    public GameAction actionToPerform;
+    public List<GameAction> actionToPerform;
 
     [SerializeReference, SubclassSelector]
-    public GameAction actionToDeactivate;
+    public List<GameAction> actionToDeactivate;
 
     public List<GameActionTrigger> triggers = new List<GameActionTrigger>();
 
@@ -40,7 +40,10 @@ public class DoorCheck : MonoBehaviour
         {
             if (!wasActivated)
             {
-                actionToPerform?.Action();
+                foreach (var action in actionToPerform)
+                {
+                    action.Action();
+                }
                 wasActivated = true;
             }
         }
@@ -48,7 +51,10 @@ public class DoorCheck : MonoBehaviour
         {
             if (wasActivated)
             {
-                actionToDeactivate?.Action();
+                foreach (var action in actionToDeactivate)
+                {
+                    action.Action();
+                }
                 wasActivated = false;
             }
         }

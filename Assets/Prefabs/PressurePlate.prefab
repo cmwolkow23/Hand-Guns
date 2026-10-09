@@ -165,10 +165,10 @@ MonoBehaviour:
   ignoreShootRaycast: 0
   enterActions:
   - rid: 3036337747221807104
-  - rid: 3036337747221807105
+  - rid: 3036338064632578048
   exitActions:
   - rid: 3036337747221807106
-  - rid: 3036337747221807107
+  - rid: 3036338064632578049
   references:
     version: 2
     RefIds:
@@ -180,13 +180,7 @@ MonoBehaviour:
         newColor: {r: 0, g: 1, b: 0.061501026, a: 1}
         mRenderers:
         - {fileID: 6315734715155152455}
-    - rid: 3036337747221807105
-      type: {class: SetAnimationSpeedGA, ns: , asm: Assembly-CSharp}
-      data:
-        name: Sets the speed of the animator
-        delay: 0
-        speed: 1
-        animator: {fileID: 0}
+        - {fileID: 0}
     - rid: 3036337747221807106
       type: {class: SwitchColorGA, ns: , asm: Assembly-CSharp}
       data:
@@ -195,12 +189,23 @@ MonoBehaviour:
         newColor: {r: 1, g: 0.058823533, b: 0.07058824, a: 0}
         mRenderers:
         - {fileID: 6315734715155152455}
-    - rid: 3036337747221807107
-      type: {class: ResetAnimatorGA, ns: , asm: Assembly-CSharp}
+        - {fileID: 0}
+    - rid: 3036338064632578048
+      type: {class: ObjectiveCheckGA, ns: , asm: Assembly-CSharp}
       data:
-        name: Resets an animator
+        name: Updates a specific door trigger signal
         delay: 0
-        animator: {fileID: 0}
+        targetDoor: {fileID: 0}
+        triggerIndex: 0
+        signalState: 1
+    - rid: 3036338064632578049
+      type: {class: ObjectiveCheckGA, ns: , asm: Assembly-CSharp}
+      data:
+        name: Updates a specific door trigger signal
+        delay: 0
+        targetDoor: {fileID: 0}
+        triggerIndex: 0
+        signalState: 0
 --- !u!1 &5928679114452821822
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +314,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
