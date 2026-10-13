@@ -8,8 +8,14 @@ public class mTest : MonoBehaviour
     [SerializeField]
     private float mMoveSpeed = 5f;
     [SerializeField]
-    private float jumpPower = 5f;
+    private float jumpPower = 2f;
     public bool grounded = false;
+    [SerializeField]
+    private AudioClip footstepSound;
+    [SerializeField]
+    private float footstepInterval = 0.5f; // Time between footsteps in seconds
+    [SerializeField]
+    private float footstepVolume = 0.7f;
 
     private Rigidbody mRB;
     private Vector3 mMovementInput;
@@ -17,17 +23,21 @@ public class mTest : MonoBehaviour
     [SerializeField]
     private CinemachinePanTilt look;
 
+    private float mFootstepTimer = 0f;
+
     void Start()
     {
         mPlayeractions = new Playeractions();
         mPlayeractions.player.Enable();
 
         mRB = GetComponent<Rigidbody>();
+
     }
 
     void Update()
     {
         ReadMovementInput();
+        UpdateFootsteps();
     }
 
     void FixedUpdate()
@@ -57,7 +67,38 @@ public class mTest : MonoBehaviour
         mRB.MovePosition(mRB.position + relativeMovement * mMoveSpeed * Time.fixedDeltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void UpdateFootsteps()
+    {
+        // Check if player is grounded and actually moving
+        bool isMoving = mMovementInput.magnitude > 0.1f;
+
+        if (grounded && isMoving)
+        {
+            mFootstepTimer -= Time.deltaTime;
+
+            // Play footstep sound when timer reaches zero
+            if (mFootstepTimer <= 0f)
+            {
+                PlayFootstep();
+                mFootstepTimer = footstepInterval;
+            }
+        }
+        else
+        {
+            // Reset timer when not moving or in air
+            mFootstepTimer = 0f;
+        }
+    }
+
+    private void PlayFootstep()
+    {
+        if (TryGetComponent<AudioSource>(out AudioSource audioSource))
+        {
+            audioSource.PlayOneShot(footstepSound, footstepVolume);
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -72,8 +113,8 @@ public class mTest : MonoBehaviour
         }
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
-        mPlayeractions?.Dispose();
+        mPlayeractions.Disable();
     }
 }
