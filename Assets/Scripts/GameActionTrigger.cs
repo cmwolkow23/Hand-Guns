@@ -10,63 +10,71 @@ using UnityEngine;
 public class GameActionTrigger : MonoBehaviour
 {
     [SerializeField]
-    private bool bTriggerOnce,bEntryOnly;
-    [Tooltip("Colliders with this tag are ignored by the trigger. Leave empty to accept every collider")]
+    private bool bTriggerOnce, bEntryOnly;
+    [Tooltip("Legacy single ignored tag. Existing scene values are still honored; use Ignore Tags to configure additional tags.")]
     public string ignoreTag;
+    [Tooltip("Tags whose colliders are ignored by the trigger. Leave empty to accept every tag not listed in the legacy field.")]
+    public List<string> ignoreTags = new List<string>();
     [Tooltip("Ignore ResetBlocks events, useful for triggers that should not be reset")]
     public bool bIgnoreReset;
     public bool ignoreShootRaycast = false;
-    [SerializeReference,SubclassSelector]
-    public List<GameAction> enterActions = new List<GameAction>(),exitActions = new List<GameAction>();
-    private bool bActive,bDeActive,bTriggered,bLock,bStateChange,bExitSequence;
+
+    [Header("Action Set A")]
+    [SerializeReference, SubclassSelector]
+    public List<GameAction> enterActions = new List<GameAction>(), exitActions = new List<GameAction>();
+
+    [Header("Action Set B")]
+    [SerializeReference, SubclassSelector]
+    public List<GameAction> alternateEnterActions = new List<GameAction>(), alternateExitActions = new List<GameAction>();
+
+    private bool bActive, bDeActive, bTriggered, bLock, bStateChange, bExitSequence;
+    private bool bUseAlternateActions, bNextActivationUsesAlternateActions;
     private Collider objectThatTriggered;
 #if UNITY_EDITOR
     [NonSerialized]
-    private string actionsSignature; //serialized state of both action lists as of the last setup pass
+    private string actionsSignature; //serialized state of all action lists as of the last setup pass
 #endif
     private void OnValidate()
     {
 #if UNITY_EDITOR
         string signature = BuildActionsSignature();
-        if(signature == actionsSignature)
+        if (signature == actionsSignature)
             return; //something else on the component changed, the action lists did not
 
         bool bBaseline = actionsSignature == null; //first pass after a domain/scene load, not a user edit
         actionsSignature = signature;
 
-        if(!bBaseline)
-            Undo.RegisterCompleteObjectUndo(this,"Run Actions setup");
+        if (!bBaseline)
+            Undo.RegisterCompleteObjectUndo(this, "Run Actions setup");
 
-        foreach(GameAction item in enterActions)
-        {
-            if(item != null)
-                item.Setup();
-        }
-        foreach(GameAction item in exitActions)
-        {
-            if(item != null)
-                item.Setup();
-        }
+        SetupActions(enterActions);
+        SetupActions(exitActions);
+        SetupActions(alternateEnterActions);
+        SetupActions(alternateExitActions);
 #endif
     }
 #if UNITY_EDITOR
-    //builds a snapshot of both action lists so edits made inside an action are detected too
+    //builds a snapshot of all action lists so edits made inside an action are detected too
     private string BuildActionsSignature()
     {
         StringBuilder builder = new StringBuilder();
-        AppendActions(builder,enterActions);
+        AppendActions(builder, enterActions);
         builder.Append('|');
-        AppendActions(builder,exitActions);
+        AppendActions(builder, exitActions);
+        builder.Append('|');
+        AppendActions(builder, alternateEnterActions);
+        builder.Append('|');
+        AppendActions(builder, alternateExitActions);
         return builder.ToString();
     }
-    private void AppendActions(StringBuilder builder,List<GameAction> actions)
+    private void AppendActions(StringBuilder builder, List<GameAction> actions)
     {
-        if(actions == null)
+        if (actions == null)
             return;
 
-        foreach(GameAction item in actions)
+        foreach (GameAction item in actions)
         {
-            if(item == null)
+            if (item == null)
             {
                 builder.Append("null;");
                 continue;
@@ -76,10 +84,21 @@ public class GameActionTrigger : MonoBehaviour
             builder.Append(';');
         }
     }
+    private void SetupActions(List<GameAction> actions)
+    {
+        if (actions == null)
+            return;
+
+        foreach (GameAction item in actions)
+        {
+            if (item != null)
+                item.Setup();
+        }
+    }
 #endif
     private void OnEnable()
     {
-        if(!bIgnoreReset)
+        if (!bIgnoreReset)
         {
             GameMaster.DelResetBlocks += ResetTrigger;
         }
@@ -88,13 +107,14 @@ public class GameActionTrigger : MonoBehaviour
         GameMaster.DelStateUnlock += UnLock;
         GameMaster.DelCheckpoint += Checkpoint;
 
-        //initialization
         GameAction.InitializeAll(enterActions);
         GameAction.InitializeAll(exitActions);
+        GameAction.InitializeAll(alternateEnterActions);
+        GameAction.InitializeAll(alternateExitActions);
     }
     private void OnDisable()
     {
-        if(!bIgnoreReset)
+        if (!bIgnoreReset)
         {
             GameMaster.DelResetBlocks -= ResetTrigger;
         }
@@ -105,29 +125,76 @@ public class GameActionTrigger : MonoBehaviour
     }
     public void TriggerEnterActions()
     {
-        StartCoroutine(nameof(EnterActionSequence));
+        if (HasAlternateActions())
+        {
+            bUseAlternateActions = bNextActivationUsesAlternateActions;
+            bNextActivationUsesAlternateActions = !bNextActivationUsesAlternateActions;
+        }
+        else
+        {
+                       bUseAlternateActions = false;
+            bNextActivationUsesAlternateActions = false;
+        }
+            StartCoroutine(nameof(EnterActionSequence));
+    }
+    public void TriggerEnterActions(Collider triggeringCollider)
+    {
+        if (IsIgnoredTag(triggeringCollider))
+            return;
+
+        objectThatTriggered = triggeringCollider;
+        TriggerEnterActions();
     }
     public void TriggerExitActions()
     {
         StartCoroutine(nameof(ExitActionSequence));
     }
     private void OnTriggerEnter(Collider other)
-    {  
+    {
+        if (IsIgnoredTag(other)) return;
         if (bActive || bLock) return;
-        if (bTriggered && bTriggerOnce) return;    
-        if(!string.IsNullOrEmpty(ignoreTag) && other.CompareTag(ignoreTag)) return;
+        if (bTriggered && bTriggerOnce) return;
 
-        bLock = true; // inquire about this
+        bLock = true;
         objectThatTriggered = other;
-        Invoke("UnLock",0.1f); //prevents multiple triggers
-        StartCoroutine(nameof(EnterActionSequence));
+        Invoke(nameof(UnLock), 0.1f);
+        TriggerEnterActions();
     }
     private void OnTriggerExit(Collider other)
-    {   
+    {
+        if (IsIgnoredTag(other)) return;
         if (bDeActive || bLock || bEntryOnly) return;
-        if (bTriggerOnce && bTriggered) return;        
+        if (bTriggerOnce && bTriggered) return;
+
         objectThatTriggered = other;
         StartCoroutine(nameof(ExitActionSequence));
+    }
+    private bool IsIgnoredTag(Collider other)
+    {
+        if (other == null)
+            return false;
+
+        if (!string.IsNullOrEmpty(ignoreTag) && other.CompareTag(ignoreTag))
+            return true;
+
+        if (ignoreTags == null)
+            return false;
+
+        foreach (string tag in ignoreTags)
+        {
+            if (!string.IsNullOrEmpty(tag) && other.CompareTag(tag))
+                return true;
+        }
+
+        return false;
+    }
+    private List<GameAction> GetCurrentEnterActions()
+    {
+        return bUseAlternateActions ? alternateEnterActions : enterActions;
+    }
+    private List<GameAction> GetCurrentExitActions()
+    {
+        return bUseAlternateActions ? alternateExitActions : exitActions;
     }
     public void ExitSequence()
     {
@@ -149,7 +216,9 @@ public class GameActionTrigger : MonoBehaviour
 
         GameAction.ResetAll(enterActions);
         GameAction.ResetAll(exitActions);
-        bLock = bActive = bDeActive = bTriggered = bStateChange = bExitSequence =false;       
+        GameAction.ResetAll(alternateEnterActions);
+        GameAction.ResetAll(alternateExitActions);
+        bLock = bActive = bDeActive = bTriggered = bStateChange = bExitSequence = false;
     }
     //full release, used when the trigger is reset or torn down
     private void ClearCollider()
@@ -157,14 +226,18 @@ public class GameActionTrigger : MonoBehaviour
         objectThatTriggered = null;
         ClearColliders(enterActions);
         ClearColliders(exitActions);
+        ClearColliders(alternateEnterActions);
+        ClearColliders(alternateExitActions);
     }
-    //a finished sequence releases only its own list, so completing one cannot strip the
-    //collider out from under the other while both are still running
+    //a finished sequence releases only its own list
     private void ClearColliders(List<GameAction> actions)
     {
-        foreach(GameAction item in actions)
+        if (actions == null)
+            return;
+
+        foreach (GameAction item in actions)
         {
-            if(item != null)
+            if (item != null)
                 item.SetCollider(null);
         }
     }
@@ -182,48 +255,90 @@ public class GameActionTrigger : MonoBehaviour
     public void Lock() { bLock = true; }
     public void UnLock() { bLock = false; }
     IEnumerator EnterActionSequence()
-    {  
+    {
         bActive = true;
         if (bTriggerOnce)
             bTriggered = true;
 
-        //resets states for actions
-        foreach(GameAction item in enterActions)
+        List<GameAction> actions = GetCurrentEnterActions();
+
+        if (actions != null)
         {
-            item.SetState(false);
-            item.SetCollider(objectThatTriggered);
-        }
-        
-        //runs actions
-        foreach(GameAction item in enterActions)
-        {
-            yield return new WaitForSeconds(item.GetDelay);
+            foreach (GameAction item in actions)
+            {
+                if (item == null)
+                    continue;
+
+                item.SetState(false);
+                item.SetCollider(objectThatTriggered);
+            }
+
+            foreach (GameAction item in actions)
+            {
+                if (item == null)
+                    continue;
+
+                yield return new WaitForSeconds(item.GetDelay);
                 item.Action();
-            while(!item.GetState)
-                yield return null;
+                while (!item.GetState)
+                    yield return null;
+            }
+
+            ClearColliders(actions);
         }
-        ClearColliders(enterActions);
+
         bActive = false;
     }
     IEnumerator ExitActionSequence()
     {
         bDeActive = true;
-       //resets states for actions
-        foreach(GameAction item in exitActions)
+        List<GameAction> actions = GetCurrentExitActions();
+
+        if (actions != null)
         {
-            item.SetState(false);
-            item.SetCollider(objectThatTriggered);
-        }
-        foreach(GameAction item in exitActions)
-        {
-            yield return new WaitForSeconds(item.GetDelay);
+            foreach (GameAction item in actions)
+            {
+                if (item == null)
+                    continue;
+
+                item.SetState(false);
+                item.SetCollider(objectThatTriggered);
+            }
+
+            foreach (GameAction item in actions)
+            {
+                if (item == null)
+                    continue;
+
+                yield return new WaitForSeconds(item.GetDelay);
                 item.Action();
-            while(!item.GetState)
-                yield return null;
-            if(bExitSequence) //if the exit sequence is triggered while the enter sequence is still running, it will stop the enter sequence and run the exit sequence
-                yield break;            
-        }     
-        ClearColliders(exitActions);
+                while (!item.GetState)
+                    yield return null;
+                if (bExitSequence)
+                    yield break;
+            }
+
+            ClearColliders(actions);
+        }
+
         bDeActive = false;
     }
-}
+
+    private bool HasAlternateActions()
+    {
+        return HasActions(alternateEnterActions) || HasActions(alternateExitActions);
+    }
+    private bool HasActions(List<GameAction> actions)
+    {
+        if (actions == null)
+            return false;
+
+        foreach (GameAction item in actions)
+        {
+            if (item != null)
+                return true;
+        }
+
+        return false;
+    }
+}       

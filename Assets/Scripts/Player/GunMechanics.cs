@@ -132,14 +132,10 @@ public class GunMechanics : MonoBehaviour
                 }
 
             }
-            if (hitInfo.transform.TryGetComponent<GameActionTrigger>(out GameActionTrigger gat))
+            GameActionTrigger gat = hitInfo.collider.GetComponentInParent<GameActionTrigger>();
+            if (gat != null && !gat.ignoreShootRaycast)
             {
-                if (!gat.ignoreShootRaycast)
-                    return;
-                else
-                {
-                    gat.enterActions.ForEach(action => action.Action());
-                }
+                gat.TriggerEnterActions(hitInfo.collider);
             }
         }
     }

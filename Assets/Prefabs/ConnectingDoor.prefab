@@ -789,12 +789,15 @@ MonoBehaviour:
   bTriggerOnce: 0
   bEntryOnly: 0
   ignoreTag: 
+  ignoreTags: []
   bIgnoreReset: 0
-  ignoreShootRaycast: 0
+  ignoreShootRaycast: 1
   enterActions:
   - rid: 7082466824758493237
   - rid: 7082466824758493238
   exitActions: []
+  alternateEnterActions: []
+  alternateExitActions: []
   references:
     version: 2
     RefIds:
@@ -803,7 +806,7 @@ MonoBehaviour:
       data:
         name: Set Checkpoint
         delay: 0
-        gameObject: {fileID: 0}
+        gameObject: {fileID: 8370949201223399410}
     - rid: 7082466824758493238
       type: {class: SwitchColorGA, ns: , asm: Assembly-CSharp}
       data:

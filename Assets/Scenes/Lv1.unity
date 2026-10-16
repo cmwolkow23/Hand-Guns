@@ -772,6 +772,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'enterActions.Array.data[0]'
+      value: 7082467129261817909
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'enterActions.Array.data[1]'
       value: 3036338091705499650
       objectReference: {fileID: 0}
@@ -784,17 +788,45 @@ PrefabInstance:
       value: Assembly-CSharp ObjectiveCheckGA
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[7082467129261817909]'
+      value: Assembly-CSharp SwitchColorGA
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036338091705499650].name
       value: Updates a specific door trigger signal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817909].name
+      value: Switch color of renderer
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036338091705499650].delay
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817909].delay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036338091705499650].targetDoor
       value: 
       objectReference: {fileID: 1644941840}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817909].newColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817909].newColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817909].newColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817909].newColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036338091705499650].signalState
       value: 1
@@ -808,7 +840,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817909].mRenderers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'managedReferences[3036337701924110339].mRenderers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 301306611}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[7082467129261817909].mRenderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 912700375}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[7082467129261817909].mRenderers.Array.data[1]'
       value: 
       objectReference: {fileID: 301306611}
     - target: {fileID: 5165293560593635463, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
@@ -1459,6 +1503,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &348312584 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8370949201223399410, guid: 871c0daee0bb24a4c86f9efd9a06744a, type: 3}
+  m_PrefabInstance: {fileID: 2211287101941211216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &381217006 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
@@ -2077,6 +2126,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'enterActions.Array.data[0]'
+      value: 7082467129261817910
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'enterActions.Array.data[1]'
       value: 3036338091705499649
       objectReference: {fileID: 0}
@@ -2089,17 +2142,45 @@ PrefabInstance:
       value: Assembly-CSharp ObjectiveCheckGA
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[7082467129261817910]'
+      value: Assembly-CSharp SwitchColorGA
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036338091705499649].name
       value: Updates a specific door trigger signal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817910].name
+      value: Switch color of renderer
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036338091705499649].delay
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817910].delay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036338091705499649].targetDoor
       value: 
       objectReference: {fileID: 1644941840}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817910].newColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817910].newColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817910].newColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817910].newColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036338091705499649].signalState
       value: 1
@@ -2113,9 +2194,21 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817910].mRenderers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'managedReferences[3036337701924110339].mRenderers.Array.data[1]'
       value: 
       objectReference: {fileID: 1313326453}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[7082467129261817910].mRenderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1313326453}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[7082467129261817910].mRenderers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1649128489}
     - target: {fileID: 5165293560593635463, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: m_Name
       value: Target (3)
@@ -2282,7 +2375,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: ignoreShootRaycast
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: ignoreTags.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'managedReferences[-2]'
@@ -2291,6 +2388,10 @@ PrefabInstance:
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: enterActions.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'ignoreTags.Array.data[0]'
+      value: TargetIgnores
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'enterActions.Array.data[0]'
@@ -2309,6 +2410,10 @@ PrefabInstance:
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[3036337701924110339]'
+      value: Assembly-CSharp SwitchColorGA
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'managedReferences[3036337819443527731]'
       value: Assembly-CSharp SwitchColorGA
       objectReference: {fileID: 0}
@@ -2321,6 +2426,10 @@ PrefabInstance:
       value: Assembly-CSharp ObjectiveCheckGA
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[3036337701924110339].name
+      value: Switch color of renderer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036337819443527731].name
       value: Switch color of renderer
       objectReference: {fileID: 0}
@@ -2331,6 +2440,10 @@ PrefabInstance:
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036337819443527785].name
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[3036337701924110339].delay
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036337819443527731].delay
@@ -2348,6 +2461,22 @@ PrefabInstance:
       propertyPath: managedReferences[3036337819443527742].doorCheck
       value: 
       objectReference: {fileID: 3030801358195021710}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[3036337701924110339].newColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[3036337701924110339].newColor.b
+      value: 0.17254901
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[3036337701924110339].newColor.g
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[3036337701924110339].newColor.r
+      value: 0.19953172
+      objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036337819443527731].newColor.a
       value: 0
@@ -2396,6 +2525,10 @@ PrefabInstance:
       propertyPath: managedReferences[3036337819443527731].mRenderers.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[3036337701924110339].mRenderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 381217008}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'managedReferences[3036337701924110339].mRenderers.Array.data[1]'
       value: 
@@ -2567,6 +2700,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e2a10702286b704da30f0db72791ac0, type: 3}
+--- !u!23 &912700375 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1026534926518402436, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+  m_PrefabInstance: {fileID: 198775603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &929894423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2830,6 +2968,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'enterActions.Array.data[0]'
+      value: 7082467129261817911
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'enterActions.Array.data[1]'
       value: 3036338091705499648
       objectReference: {fileID: 0}
@@ -2842,17 +2984,45 @@ PrefabInstance:
       value: Assembly-CSharp ObjectiveCheckGA
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[7082467129261817911]'
+      value: Assembly-CSharp SwitchColorGA
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036338091705499648].name
       value: Updates a specific door trigger signal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817911].name
+      value: Switch color of renderer
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036338091705499648].delay
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817911].delay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036338091705499648].targetDoor
       value: 
       objectReference: {fileID: 1644941840}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817911].newColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817911].newColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817911].newColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817911].newColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036338091705499648].signalState
       value: 1
@@ -2866,7 +3036,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817911].mRenderers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'managedReferences[3036337701924110339].mRenderers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 929894424}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[7082467129261817911].mRenderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2060645412}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[7082467129261817911].mRenderers.Array.data[1]'
       value: 
       objectReference: {fileID: 929894424}
     - target: {fileID: 5165293560593635463, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
@@ -4565,6 +4747,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edd093dec87fc0489b48f4f2968fc73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameActionTrigger
+--- !u!23 &1649128489 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1026534926518402436, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+  m_PrefabInstance: {fileID: 721011421}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1692631581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4615,6 +4802,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2600044649832611687, guid: c59fb47fd9aae5748946c01b9eef2284, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102492844644953369, guid: c59fb47fd9aae5748946c01b9eef2284, type: 3}
+      propertyPath: weapons.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5406,6 +5597,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!23 &2060645412 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1026534926518402436, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+  m_PrefabInstance: {fileID: 1057637364}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2091751213
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5528,6 +5724,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 899787425363626870, guid: 871c0daee0bb24a4c86f9efd9a06744a, type: 3}
+      propertyPath: managedReferences[7082466824758493237].gameObject
+      value: 
+      objectReference: {fileID: 348312584}
     - target: {fileID: 899787425363626870, guid: 871c0daee0bb24a4c86f9efd9a06744a, type: 3}
       propertyPath: 'managedReferences[7082466824758493238].mRenderers.Array.data[0]'
       value: 

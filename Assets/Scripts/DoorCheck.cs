@@ -11,14 +11,14 @@ public class DoorCheck : MonoBehaviour
     [SerializeReference, SubclassSelector]
     public List<GameAction> actionToDeactivate;
 
-    public List<GameActionTrigger> triggers = new List<GameActionTrigger>();
+    [Tooltip("Assign GameActionTrigger or MassTrigger components here.")]
+    public List<MonoBehaviour> triggers = new List<MonoBehaviour>();
 
     private bool wasActivated = false;
 
     // Track state per door instance rather than globally across the whole game
     private Dictionary<int, bool> triggerStates = new Dictionary<int, bool>();
 
-    // This is now an instance method requiring a target door reference to call
     public void UpdateTriggerSignal(int triggerIndex, bool state)
     {
         triggerStates[triggerIndex] = state;
@@ -41,22 +41,17 @@ public class DoorCheck : MonoBehaviour
             if (!wasActivated)
             {
                 foreach (var action in actionToPerform)
-                {
                     action.Action();
-                }
+
                 wasActivated = true;
             }
         }
-        else
+        else if (wasActivated)
         {
-            if (wasActivated)
-            {
-                foreach (var action in actionToDeactivate)
-                {
-                    action.Action();
-                }
-                wasActivated = false;
-            }
+            foreach (var action in actionToDeactivate)
+                action.Action();
+
+            wasActivated = false;
         }
     }
 }

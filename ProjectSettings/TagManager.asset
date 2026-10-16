@@ -9,6 +9,7 @@ TagManager:
   - GunRay
   - Change
   - arm
+  - PhysCube
   layers:
   - Default
   - TransparentFX

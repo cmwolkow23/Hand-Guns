@@ -129,24 +129,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameActionTrigger
   bTriggerOnce: 1
   bEntryOnly: 0
-  ignoreTag: 
+  ignoreTag: TargetIgnores
+  ignoreTags: []
   bIgnoreReset: 0
   ignoreShootRaycast: 0
   enterActions:
-  - rid: 3036337701924110339
-  - rid: -2
+  - rid: 7082467129261817908
   exitActions: []
+  alternateEnterActions: []
+  alternateExitActions: []
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 3036337701924110339
+    - rid: 7082467129261817908
       type: {class: SwitchColorGA, ns: , asm: Assembly-CSharp}
       data:
         name: Switch color of renderer
         delay: 0
-        newColor: {r: 0.19953172, g: 0.5294118, b: 0.17254901, a: 0}
+        newColor: {r: 0.4156863, g: 0.63529414, b: 0.24705884, a: 0}
         mRenderers:
-        - {fileID: 1026534926518402436}
         - {fileID: 1026534926518402436}
