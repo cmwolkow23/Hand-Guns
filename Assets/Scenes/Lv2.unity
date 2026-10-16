@@ -605,12 +605,16 @@ MonoBehaviour:
   bEntryOnly: 0
   ignoreTag: 
   bIgnoreReset: 0
-  ignoreShootRaycast: 0
+  ignoreShootRaycast: 1
   minimumMass: 2
   enterActions:
   - rid: 7082467129261817914
+  - rid: 7082467141622431753
+  - rid: 7082467141622431755
   exitActions:
   - rid: 7082467129261817915
+  - rid: 7082467141622431754
+  - rid: 7082467141622431756
   references:
     version: 2
     RefIds:
@@ -630,6 +634,36 @@ MonoBehaviour:
         targetDoor: {fileID: 1034902437}
         triggerIndex: 0
         signalState: 0
+    - rid: 7082467141622431753
+      type: {class: SwitchColorGA, ns: , asm: Assembly-CSharp}
+      data:
+        name: Switch color of renderer
+        delay: 0
+        newColor: {r: 0, g: 1, b: 0, a: 0}
+        mRenderers:
+        - {fileID: 1034902438}
+    - rid: 7082467141622431754
+      type: {class: SwitchColorGA, ns: , asm: Assembly-CSharp}
+      data:
+        name: Switch color of renderer
+        delay: 0
+        newColor: {r: 1, g: 0, b: 0, a: 0}
+        mRenderers:
+        - {fileID: 1034902438}
+    - rid: 7082467141622431755
+      type: {class: PrintGA, ns: , asm: Assembly-CSharp}
+      data:
+        name: Print
+        delay: 0
+        bPrintCollider: 0
+        message: hvyplateON
+    - rid: 7082467141622431756
+      type: {class: PrintGA, ns: , asm: Assembly-CSharp}
+      data:
+        name: Print
+        delay: 0
+        bPrintCollider: 0
+        message: hvycubeOFF
 --- !u!1 &67474553
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,7 +1161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2600044649832611687, guid: c59fb47fd9aae5748946c01b9eef2284, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.6
+      value: 38.52
       objectReference: {fileID: 0}
     - target: {fileID: 2600044649832611687, guid: c59fb47fd9aae5748946c01b9eef2284, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1215,6 +1249,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 950697237}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817908].newColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817908].newColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817908].newColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[7082467129261817913].targetDoor
       value: 
       objectReference: {fileID: 950697237}
@@ -1235,7 +1281,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817908].mRenderers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'managedReferences[3036337701924110339].mRenderers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1175488283}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[7082467129261817908].mRenderers.Array.data[1]'
       value: 
       objectReference: {fileID: 1175488283}
     - target: {fileID: 5165293560593635463, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
@@ -2007,6 +2061,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8085799489282309755, guid: 02d4308b4b44c524e828e20b620fb367, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2146,6 +2204,10 @@ PrefabInstance:
     - target: {fileID: 434247198497748935, guid: 4078012ff383eac4a8c229d591f178bb, type: 3}
       propertyPath: m_Name
       value: PressurePlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 465781231815983583, guid: 4078012ff383eac4a8c229d591f178bb, type: 3}
+      propertyPath: ignoreShootRaycast
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 465781231815983583, guid: 4078012ff383eac4a8c229d591f178bb, type: 3}
       propertyPath: 'managedReferences[-2]'
@@ -2684,6 +2746,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 950697237}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817908].newColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817908].newColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817908].newColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[7082467129261817912].targetDoor
       value: 
       objectReference: {fileID: 950697237}
@@ -2704,7 +2778,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: managedReferences[7082467129261817908].mRenderers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'managedReferences[3036337701924110339].mRenderers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 572815873}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[7082467129261817908].mRenderers.Array.data[1]'
       value: 
       objectReference: {fileID: 572815873}
     - target: {fileID: 5165293560593635463, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
@@ -3274,7 +3356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: enterActions.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'ignoreTags.Array.data[0]'
@@ -3282,11 +3364,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'enterActions.Array.data[0]'
-      value: -2
+      value: 3036337819443527731
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'enterActions.Array.data[1]'
-      value: 3036337819443527731
+      value: 3036337819443527785
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'enterActions.Array.data[2]'
@@ -3382,7 +3464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: managedReferences[3036337819443527731].mRenderers.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'managedReferences[3036337701924110339].mRenderers.Array.data[1]'
@@ -3390,6 +3472,10 @@ PrefabInstance:
       objectReference: {fileID: 381217008}
     - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
       propertyPath: 'managedReferences[3036337819443527731].mRenderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 381217008}
+    - target: {fileID: 2556049487031739777, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
+      propertyPath: 'managedReferences[3036337819443527731].mRenderers.Array.data[1]'
       value: 
       objectReference: {fileID: 357274559}
     - target: {fileID: 5165293560593635463, guid: aa2e063fbbdf1c8428bfe68de1c6a00c, type: 3}
@@ -4148,6 +4234,10 @@ PrefabInstance:
       propertyPath: 'triggers.Array.data[0]'
       value: 
       objectReference: {fileID: 63332597}
+    - target: {fileID: 3155816390918662539, guid: 871c0daee0bb24a4c86f9efd9a06744a, type: 3}
+      propertyPath: managedReferences[7082466892726665272].speed
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6077282959883382803, guid: 871c0daee0bb24a4c86f9efd9a06744a, type: 3}
       propertyPath: m_Name
       value: ConnectingDoor (2)
@@ -4585,7 +4675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3077125555598341149, guid: c2feb371a1bb56d4db1f071fe92b583f, type: 3}
       propertyPath: ignoreShootRaycast
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3077125555598341149, guid: c2feb371a1bb56d4db1f071fe92b583f, type: 3}
       propertyPath: ignoreTags.Array.size
@@ -5171,8 +5261,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410889950}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.14443104, y: -0.055392485, z: -0.0080981385, w: 0.98793006}
-  m_LocalPosition: {x: 3.9231791, y: 1.5600007, z: -11.6}
+  m_LocalRotation: {x: -0.16294648, y: 0.097460546, z: 0.016177282, w: 0.9816762}
+  m_LocalPosition: {x: 3.9231791, y: 1.5600007, z: 38.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

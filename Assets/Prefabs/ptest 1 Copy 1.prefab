@@ -134,6 +134,9 @@ MonoBehaviour:
   mMoveSpeed: 5
   jumpPower: 5
   grounded: 0
+  footstepSound: {fileID: 0}
+  footstepInterval: 0.5
+  footstepVolume: 0.7
   look: {fileID: 4045186548546512084}
 --- !u!54 &854065687793240336
 Rigidbody:
@@ -190,7 +193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8522376084063977303}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.14443104, y: -0.055392485, z: -0.0080981385, w: 0.98793006}
+  m_LocalRotation: {x: -0.16294648, y: 0.097460546, z: 0.016177282, w: 0.9816762}
   m_LocalPosition: {x: 0, y: 0.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -255,7 +258,7 @@ MonoBehaviour:
   ReferenceFrame: 1
   RecenterTarget: 0
   PanAxis:
-    Value: -6.418341
+    Value: 11.339459
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -265,7 +268,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: -16.634937
+    Value: -18.848969
     Center: 0
     Range: {x: -90, y: 90}
     Wrap: 0
@@ -329,6 +332,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunMechanics
   explosionForce: 12
   forceMultiplier: 15
+  Animator: {fileID: 0}
+  shootSound: {fileID: 0}
+  isNormalForce: 1
+  isExplosiveForce: 0
+  isProjectile: 0
+  projectilePoint: {fileID: 0}
+  gunChanger: {fileID: 0}
+  weapons: []
 --- !u!1001 &8433506152799150494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -363,7 +374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1069201100080667491, guid: e6c7adfa374b2e543be1e59d33f93e32, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.751
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 1069201100080667491, guid: e6c7adfa374b2e543be1e59d33f93e32, type: 3}
       propertyPath: m_LocalRotation.w
@@ -441,7 +452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1069201100080667491, guid: e6c7adfa374b2e543be1e59d33f93e32, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.751
+      value: 0.19000012
       objectReference: {fileID: 0}
     - target: {fileID: 1069201100080667491, guid: e6c7adfa374b2e543be1e59d33f93e32, type: 3}
       propertyPath: m_LocalRotation.w

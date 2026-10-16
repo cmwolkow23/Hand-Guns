@@ -523,7 +523,7 @@ MonoBehaviour:
       data:
         name: Sets the parameter speed and playhead of the animator
         delay: 0
-        speed: 1
+        speed: -1
         animator: {fileID: 4430718171140934305}
         parameterName: AnimSpeed
         stateName: DoorOpen
@@ -788,7 +788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameActionTrigger
   bTriggerOnce: 0
   bEntryOnly: 0
-  ignoreTag: 
+  ignoreTag: PhysCube
   ignoreTags: []
   bIgnoreReset: 0
   ignoreShootRaycast: 1
